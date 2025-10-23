@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVKAR SAREES - Drape Elegance. Define Tradition.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom colors for Navkar Sarees */
+        .bg-navkar-primary { background-color: #800000; /* Deep Maroon */ }
+        .text-navkar-primary { color: #800000; }
+        .bg-navkar-secondary { background-color: #FFD700; /* Gold */ }
+        .text-navkar-secondary { color: #FFD700; }
+
+        /* Custom scrollbar for a touch of elegance */
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: #f1f1f1; }
+        body::-webkit-scrollbar-thumb { background: #800000; border-radius: 4px; }
+        body::-webkit-scrollbar-thumb:hover { background: #a00000; }
+    </style>
+</head>
+<body class="bg-white font-sans">
+
+    <div class="max-w-md mx-auto shadow-2xl border-x border-b border-gray-100 min-h-screen flex flex-col">
+
+        <header class="bg-navkar-primary p-4 shadow-lg sticky top-0 z-10">
+            <h1 class="text-3xl font-serif text-white text-center tracking-wider">
+                NAVKAR SAREES
+            </h1>
+            <p class="text-sm text-navkar-secondary text-center mt-1 italic">
+                Drape Elegance. Define Tradition.
+            </p>
+        </header>
+
+        <main class="flex-grow p-4 space-y-8" id="app-content">
+            
+            <section id="home-screen" data-page="home">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-navkar-primary border-b-2 border-navkar-secondary pb-2 inline-block">Featured Collection</h2>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 cursor-pointer" onclick="viewCategory('Bridal & Heavy Work')">
+                        <div class="h-56 bg-pink-100 flex items-center justify-center border-b border-gray-200">
+                            <span class="text-gray-500 text-lg">Bridal Silk Image</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-navkar-primary">The Heritage Bridal Silk</h3>
+                            <p class="text-sm text-gray-600 mt-1">Exquisite hand-woven silk for your special day. Truly Navkar's finest.</p>
+                            <span class="inline-block bg-navkar-secondary text-navkar-primary font-bold text-xs px-3 py-1 rounded-full mt-3">VIEW DETAILS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 cursor-pointer" onclick="viewCategory('Designer & Fusion')">
+                        <div class="h-56 bg-green-100 flex items-center justify-center border-b border-gray-200">
+                            <span class="text-gray-500 text-lg">Georgette Image</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-navkar-primary">The Modern Drape Georgette</h3>
+                            <p class="text-sm text-gray-600 mt-1">Lightweight and vibrant, embracing modern fashion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="changePage('catalogue-screen')" class="w-full py-3 px-6 bg-navkar-primary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition duration-300">
+                        View All Our Brand Clothes
+                    </button>
+                </div>
+            </section>
+
+            <section id="catalogue-screen" data-page="catalogue" class="hidden">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-navkar-primary border-b-2 border-navkar-secondary pb-2 inline-block">All Our Saree Categories</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div onclick="viewCategory('Classic Silk Collection')" class="bg-gray-50 p-4 rounded-lg shadow-lg border-l-4 border-navkar-secondary cursor-pointer hover:bg-gray-100 transition">
+                        <h3 class="text-xl font-bold text-navkar-primary">1. Classic Silk Collection</h3>
+                        <p class="text-sm text-gray-600 mt-1">Experience the richness of Kanjivaram, Banarasi, and Mysore silk.</p>
+                        <span class="text-navkar-primary font-medium text-sm mt-2 block">Browse Sarees →</span>
+                    </div>
+                    <div onclick="viewCategory('Bridal & Heavy Work')" class="bg-gray-50 p-4 rounded-lg shadow-lg border-l-4 border-navkar-secondary cursor-pointer hover:bg-gray-100 transition">
+                        <h3 class="text-xl font-bold text-navkar-primary">2. Bridal & Heavy Work</h3>
+                        <p class="text-sm text-gray-600 mt-1">Intricate embroidery, zardozi work, and stone embellishments.</p>
+                        <span class="text-navkar-primary font-medium text-sm mt-2 block">Browse Sarees →</span>
+                    </div>
+                    <div onclick="viewCategory('Daily Wear & Cottons')" class="bg-gray-50 p-4 rounded-lg shadow-lg border-l-4 border-navkar-secondary cursor-pointer hover:bg-gray-100 transition">
+                        <h3 class="text-xl font-bold text-navkar-primary">3. Daily Wear & Cottons</h3>
+                        <p class="text-sm text-gray-600 mt-1">Comfortable and breathable cotton, linen, and art silk sarees.</p>
+                        <span class="text-navkar-primary font-medium text-sm mt-2 block">Browse Sarees →</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="products-screen" data-page="products" class="hidden">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-navkar-primary border-b-2 border-navkar-secondary pb-2 inline-block" id="category-title"></h2>
+                    <p class="text-sm text-gray-500 mt-1">Sample items from this collection.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-white border rounded-lg p-3 flex shadow-md hover:shadow-lg transition">
+                        <div class="w-20 h-20 bg-gray-200 flex-shrink-0 rounded-md mr-3 border border-navkar-secondary"></div>
+                        <div>
+                            <h4 class="font-semibold text-navkar-primary">Signature Saree #1</h4>
+                            <p class="text-xs text-gray-600">Pure silk with traditional weaving. Ask about customization.</p>
+                            <p class="text-sm font-bold text-green-700 mt-1">₹ [Inquire for Price]</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border rounded-lg p-3 flex shadow-md hover:shadow-lg transition">
+                        <div class="w-20 h-20 bg-gray-200 flex-shrink-0 rounded-md mr-3 border border-navkar-secondary"></div>
+                        <div>
+                            <h4 class="font-semibold text-navkar-primary">Elegant Saree #2</h4>
+                            <p class="text-xs text-gray-600">Lightweight fabric in a modern pastel shade. Perfect for a day event.</p>
+                            <p class="text-sm font-bold text-green-700 mt-1">₹ [Inquire for Price]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button onclick="changePage('catalogue-screen')" class="py-2 px-4 text-sm bg-gray-200 text-navkar-primary rounded-full hover:bg-gray-300 transition">
+                        ← Back to All Categories
+                    </button>
+                </div>
+            </section>
+
+            <section id="contact-screen" data-page="contact" class="hidden">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-navkar-primary border-b-2 border-navkar-secondary pb-2 inline-block">Connect With Us</h2>
+                </div>
+
+                <form class="space-y-4 p-4 border rounded-lg shadow-inner bg-gray-50">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 border focus:ring-navkar-primary focus:border-navkar-primary">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email / Phone</label>
+                        <input type="text" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 border focus:ring-navkar-primary focus:border-navkar-primary">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Your Inquiry</label>
+                        <textarea id="message" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 border focus:ring-navkar-primary focus:border-navkar-primary" placeholder="I am interested in a Silk Saree from the Classic Collection..."></textarea>
+                    </div>
+                    <button type="button" onclick="alert('Thank you for contacting NAVKAR SAREES! We will reach out soon.')" class="w-full py-3 px-6 bg-navkar-primary text-white text-lg font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition duration-300">
+                        Send Inquiry
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <nav class="bg-gray-100 border-t border-gray-200 p-2 shadow-inner sticky bottom-0">
+            <div class="flex justify-around items-center">
+                
+                <button id="nav-home" onclick="changePage('home-screen')" class="flex flex-col items-center p-2 text-navkar-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-10v10a1 1 0 001 1h3M14 10l-2-2-2 2"></path></svg>
+                    <span class="text-xs mt-1 font-medium">Home</span>
+                </button>
+                
+                <button id="nav-catalogue" onclick="changePage('catalogue-screen')" class="flex flex-col items-center p-2 text-gray-500 hover:text-navkar-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span class="text-xs mt-1 font-medium">Clothes</span>
+                </button>
+                
+                <button id="nav-contact" onclick="changePage('contact-screen')" class="flex flex-col items-center p-2 text-gray-500 hover:text-navkar-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span class="text-xs mt-1 font-medium">Contact</span>
+                </button>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        // Function to handle showing and hiding pages (screens)
+        function changePage(targetId) {
+            // Hide all pages
+            document.querySelectorAll('section[data-page]').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the target page
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                // Scroll to the top of the content when changing pages
+                document.getElementById('app-content').scrollTop = 0;
+            }
+
+            // Update active state of navigation buttons
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('text-navkar-primary', 'font-semibold');
+                button.classList.add('text-gray-500', 'hover:text-navkar-primary');
+            });
+            
+            // Get the navigation button corresponding to the active page
+            // Logic to handle when 'products-screen' is active, but 'catalogue' button should be highlighted
+            let navId = targetId.replace('-screen', '');
+            if (navId === 'products') {
+                navId = 'catalogue'; // Highlight the Catalogue button when viewing products
+            }
+
+            const navButton = document.getElementById('nav-' + navId);
+            if (navButton) {
+                navButton.classList.add('text-navkar-primary', 'font-semibold');
+                navButton.classList.remove('text-gray-500');
+            }
+        }
+
+        // Function to simulate viewing products within a category
+        function viewCategory(categoryName) {
+            // Update the title of the products screen
+            document.getElementById('category-title').textContent = categoryName;
+
+            // Switch to the products screen
+            changePage('products-screen');
+
+            // In a real app, you would load product data here based on the categoryName
+        }
+
+        // Initialize the app to the home screen when loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            changePage('home-screen');
+        });
+    </script>
+
+</body>
+</html>
